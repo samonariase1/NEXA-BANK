@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexaBank - World-class digital banking experience">
+    <title>NexaBank | Premium Digital Banking</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    
+    <!-- CSS Framework -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.83/dist/themes/light.css">
+    
+    <style>
+        :root {
+            /* Color System */
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --success: #10b981;
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --gradient-success: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            --gradient-danger: linear-gradient(135deg, var(--danger) 0%, #dc2626 100%);
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+        }
+        
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --background: #0f172a;
+            --surface: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #e2e8f0;
+            --border: #334155;
+        }
+        
+        /* Light Mode Variables */
+        [data-theme="light"] {
+            --background: #ffffff;
+            --surface: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --border: #e2e8f0;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        /* Layout Components */
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Card Component */
+        .card {
+            background-color: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: var(--space-lg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Button Component */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            gap: var(--space-xs);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Form Components */
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background-color: var(--surface);
+            color: var(--text-primary);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: var(--space-md);
+            right: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius);
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            animation: slideInRight 0.3s ease-out;
+            max-width: 350px;
+        }
+        
+        .notification.success {
+            background: var(--gradient-success);
+        }
+        
+        .notification.error {
+            background: var(--gradient-danger);
+        }
+        
+        /* Animations */
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Banking App Specific Styles */
+        .banking-app {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background-color: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: var(--space-lg);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+        
+        .main-content {
+            padding: var(--space-lg);
+            background-color: var(--background);
+        }
+        
+        /* Dashboard Overview */
+        .dashboard-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .banking-app {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                z-index: 100;
+                transition: left 0.3s ease;
+            }
+            
+            .sidebar.open {
+                left: 0;
+            }
+            
+            .main-content {
+                padding: var(--space-md);
+            }
+        }
+        
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: var(--space-md);
+            right: var(--space-md);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 50;
+            border: none;
+        }
+        
+        /* Enhanced Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .print-content, .print-content * {
+                visibility: visible;
+            }
+            
+            .print-content {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: var(--radius-full);
+        }
+        
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .card-3d-inner {
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+        
+        .card-3d:hover .card-3d-inner {
+            transform: rotateY(10deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="banking-app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo" style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl);">
+                    <div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">N</div>
+                    <h1 style="font-size: 1.25rem;">NexaBank</h1>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-xs);">
+                    <li>
+                        <a href="#" class="nav-link active" onclick="showDashboard()" style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius); text-decoration: none; color: var(--text-primary); transition: background-color 0.2s ease;">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" onclick="showAccounts()" style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius); text-decoration: none; color: var(--text-primary); transition: background-color 0.2s ease;">
+                            <i class="fas fa-wallet"></i>
+                            <span>Accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" onclick="showTransactions()" style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius); text-decoration: none; color: var(--text-primary); transition: background-color 0.2s ease;">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Transactions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" onclick="showPayments()" style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius); text-decoration: none; color: var(--text-primary); transition: background-color 0.2s ease;">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" onclick="showInvestments()" style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius); text-decoration: none; color: var(--text-primary); transition: background-color 0.2s ease;">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Investments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" onclick="showSettings()" style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--radius); text-decoration: none; color: var(--text-primary); transition: background-color 0.2s ease;">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer" style="margin-top: auto; padding-top: var(--space-lg);">
+                <div class="user-profile" style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm); border-radius: var(--radius); background-color: rgba(99, 102, 241, 0.1);">
+                    <div class="avatar" style="width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">JD</div>
+                    <div class="user-info">
+                        <div style="font-weight: 500;">John Doe</div>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary);">Premium Member</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="main-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
+                <button class="mobile-menu-btn" onclick="toggleSidebar()" style="background: none; border: none; color: var(--text-primary); display: none;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <h2 id="page-title" class="animate__animated animate__fadeIn">Dashboard</h2>
+                
+                <div class="header-actions" style="display: flex; align-items: center; gap: var(--space-sm);">
+                    <button class="btn btn-icon" onclick="showNotifications()" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge" style="position: absolute; top: -5px; right: -5px; background: var(--danger); color: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: bold;">3</span>
+                    </button>
+                    <button class="btn btn-icon" onclick="toggleSearch()" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div id="dashboard-content">
+                <div class="dashboard-overview">
+                    <!-- Balance Card -->
+                    <div class="card card-3d">
+                        <div class="card-3d-inner">
+                            <div style="margin-bottom: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+                                <h3 style="font-size: 1rem; color: var(--text-secondary);">Total Balance</h3>
+                                <i class="fas fa-eye" style="cursor: pointer;" onclick="toggleBalanceVisibility()"></i>
+                            </div>
+                            <div id="balance-amount" style="font-size: 2rem; font-weight: 700; font-family: var(--font-sans); margin-bottom: var(--space-sm);">₦10,000,000,000.00</div>
+                            <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg);">
+                                <span style="color: var(--success); font-weight: 500;">
+                                    <i class="fas fa-arrow-up"></i> +₦2,847,650 today
+                                </span>
+                            </div>
+                            <div style="display: flex; gap: var(--space-sm);">
+                                <button class="btn btn-primary" onclick="showTransferModal()" style="flex: 1;">
+                                    <i class="fas fa-paper-plane"></i> Send
+                                </button>
+                                <button class="btn btn-primary" onclick="showDepositModal()" style="flex: 1;">
+                                    <i class="fas fa-plus"></i> Deposit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <h3 style="margin-bottom: var(--space-md); font-size: 1rem;">Quick Actions</h3>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-sm);">
+                            <button class="btn btn-icon" onclick="showTransferModal()" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-xs);">
+                                <div style="width: 48px; height: 48px; border-radius: var(--radius); background: rgba(99, 102, 241, 0.1); display: flex; align-items: center; justify-content: center; color: var(--primary);">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <span style="font-size: 0.75rem;">Transfer</span>
+                            </button>
+                            <button class="btn btn-icon" onclick="showPayments()" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-xs);">
+                                <div style="width: 48px; height: 48px; border-radius: var(--radius); background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: var(--success);">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <span style="font-size: 0.75rem;">Pay Bills</span>
+                            </button>
+                            <button class="btn btn-icon" onclick="showInvestments()" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-xs);">
+                                <div style="width: 48px; height: 48px; border-radius: var(--radius); background: rgba(239, 68, 68, 0.1); display: flex; align-items: center; justify-content: center; color: var(--danger);">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <span style="font-size: 0.75rem;">Invest</span>
+                            </button>
+                            <button class="btn btn-icon" onclick="showAirtimeModal()" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-xs);">
+                                <div style="width: 48px; height: 48px; border-radius: var(--radius); background: rgba(245, 158, 11, 0.1); display: flex; align-items: center; justify-content: center; color: var(--warning);">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <span style="font-size: 0.75rem;">Airtime</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Transactions -->
+                <div class="card" style="margin-bottom: var(--space-lg);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h3 style="font-size: 1rem;">Recent Transactions</h3>
+                        <button class="btn btn-sm" onclick="showTransactions()" style="padding: var(--space-xs) var(--space-sm); font-size: 0.75rem;">
+                            View All
+                        </button>
+                    </div>
+                    
+                    <div id="transactions-list" style="display: flex; flex-direction: column; gap: var(--space-md);">
+                        <!-- Transactions will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Financial Overview -->
+                <div class="card">
+                    <h3 style="margin-bottom: var(--space-md); font-size: 1rem;">Financial Overview</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+                        <div>
+                            <div id="balance-chart" style="height: 200px;"></div>
+                        </div>
+                        <div>
+                            <div id="spending-chart" style="height: 200px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Content Sections (hidden by default) -->
+            <div id="accounts-content" class="hidden">
+                <!-- Accounts content will be loaded here -->
+            </div>
+            
+            <div id="transactions-content" class="hidden">
+                <!-- Transactions content will be loaded here -->
+            </div>
+            
+            <!-- [Other content sections...] -->
+        </main>
+    </div>
+    
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+    
+    <!-- Transfer Modal -->
+    <div id="transfer-modal" class="modal hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+        <div class="card" style="width: 100%; max-width: 500px; margin: var(--space-md);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                <h3 style="font-size: 1.25rem;">
+                    <i class="fas fa-paper-plane"></i> Transfer Funds
+                </h3>
+                <button onclick="closeModal('transfer-modal')" style="background: none; border: none; color: var(--text-secondary); font-size: 1.25rem;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="transfer-form" onsubmit="processTransfer(event)">
+                <div class="form-group">
+                    <label class="form-label" for="recipient-account">Recipient Account</label>
+                    <input type="text" class="form-input" id="recipient-account" placeholder="Enter account number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="transfer-amount">Amount (₦)</label>
+                    <input type="number" class="form-input" id="transfer-amount" placeholder="0.00" min="1" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="transfer-narration">Narration</label>
+                    <input type="text" class="form-input" id="transfer-narration" placeholder="What's this for?">
+                </div>
+                
+                <div style="display: flex; gap: var(--space-sm); margin-top: var(--space-lg);">
+                    <button type="button" class="btn" onclick="closeModal('transfer-modal')" style="flex: 1; background: var(--surface); color: var(--text-primary);">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        <i class="fas fa-paper-plane"></i> Send Money
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- [Other modals...] -->
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    
+    <!-- Main App Script -->
+    <script>
+        // Global State
+        const state = {
+            balance: 10000000000, // ₦10 billion
+            transactions: [],
+            darkMode: localStorage.getItem('darkMode') === 'true' || false,
+            balanceVisible: true
+        };
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            initApp();
+            loadTransactions();
+            initCharts();
+            setupServiceWorker();
+            setupAccessibility();
+        });
+        
+        function initApp() {
+            // Set initial theme
+            if (state.darkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').className = 'fas fa-sun';
+            }
+            
+            // Set initial balance visibility
+            updateBalanceVisibility();
+            
+            // Setup mobile menu toggle
+            setupMobileMenu();
+        }
+        
+        function loadTransactions() {
+            // Simulate API call to load transactions
+            setTimeout(() => {
+                state.transactions = [
+                    {
+                        id: 1,
+                        amount: 2847650000,
+                        description: 'Tesla Stock Dividend',
+                        icon: 'fas fa-coins',
+                        time: '10:30 AM',
+                        category: 'dividend',
+                        status: 'completed',
+                        date: new Date()
+                    },
+                    {
+                        id: 2,
+                        amount: -450000000,
+                        description: 'Bombardier Global 7500 Payment',
+                        icon: 'fas fa-plane',
+                        time: 'Yesterday',
+                        category: 'purchase',
+                        status: 'completed',
+                        date: new Date(Date.now() - 86400000)
+                    },
+                    {
+                        id: 3,
+                        amount: 180000000,
+                        description: 'Lagos Island Property ROI',
+                        icon: 'fas fa-home',
+                        time: '2 days ago',
+                        category: 'realestate',
+                        status: 'completed',
+                        date: new Date(Date.now() - 172800000)
+                    }
+                ];
+                
+                renderTransactions();
+            }, 500);
+        }
+        
+        function renderTransactions() {
+            const container = document.getElementById('transactions-list');
+            container.innerHTML = '';
+            
+            state.transactions.slice(0, 5).forEach(transaction => {
+                const transactionEl = document.createElement('div');
+                transactionEl.className = 'transaction-item';
+                transactionEl.innerHTML = `
+                    <div style="width: 40px; height: 40px; border-radius: var(--radius); background: ${getTransactionColor(transaction.category)}; display: flex; align-items: center; justify-content: center; margin-right: var(--space-sm); color: white;">
+                        <i class="${transaction.icon}"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 500; margin-bottom: var(--space-xs);">
+                            ${transaction.description}
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary);">
+                            ${transaction.time} • ${transaction.status}
+                        </div>
+                    </div>
+                    <div style="font-weight: 600; font-family: var(--font-sans); color: ${transaction.amount > 0 ? 'var(--success)' : 'var(--danger)'};">
+                        ${transaction.amount > 0 ? '+' : ''}₦${Math.abs(transaction.amount).toLocaleString()}
+                    </div>
+                `;
+                container.appendChild(transactionEl);
+            });
+        }
+        
+        function getTransactionColor(category) {
+            const colors = {
+                dividend: 'var(--success)',
+                investment: 'var(--primary)',
+                business: 'var(--info)',
+                expense: 'var(--danger)',
+                purchase: 'var(--warning)',
+                realestate: '#8b5cf6',
+                charity: '#ec4899'
+            };
+            return colors[category] || 'var(--text-secondary)';
+        }
+        
+        function initCharts() {
+            // Balance Chart
+            const balanceChart = new Chart(document.getElementById('balance-chart'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Balance',
+                        data: [8500000000, 9200000000, 8800000000, 9500000000, 10000000000, 10500000000],
+                        borderColor: 'var(--primary)',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    return `₦${context.parsed.y.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: (value) => {
+                                    return `₦${(value / 1000000000).toFixed(1)}B`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Spending Chart
+            const spendingChart = new Chart(document.getElementById('spending-chart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Investments', 'Luxury', 'Business', 'Charity'],
+                    datasets: [{
+                        data: [45, 30, 20, 5],
+                        backgroundColor: [
+                            'var(--primary)',
+                            'var(--warning)',
+                            'var(--info)',
+                            'var(--danger)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+        
+        // Theme Toggle
+        function toggleTheme() {
+            state.darkMode = !state.darkMode;
+            localStorage.setItem('darkMode', state.darkMode);
+            
+            if (state.darkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').className = 'fas fa-sun';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').className = 'fas fa-moon';
+            }
+        }
+        
+        // Balance Visibility Toggle
+        function toggleBalanceVisibility() {
+            state.balanceVisible = !state.balanceVisible;
+            updateBalanceVisibility();
+        }
+        
+        function updateBalanceVisibility() {
+            const balanceElement = document.getElementById('balance-amount');
+            if (state.balanceVisible) {
+                balanceElement.textContent = `₦${state.balance.toLocaleString()}`;
+            } else {
+                balanceElement.textContent = '••••••••••••';
+            }
+        }
+        
+        // Modal Functions
+        function showModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+        
+        function showTransferModal() {
+            showModal('transfer-modal');
+        }
+        
+        // Form Processing
+        function processTransfer(event) {
+            event.preventDefault();
+            
+            const recipient = document.getElementById('recipient-account').value;
+            const amount = parseFloat(document.getElementById('transfer-amount').value);
+            const narration = document.getElementById('transfer-narration').value;
+            
+            if (!recipient || !amount || amount <= 0) {
+                showNotification('Please fill all fields correctly', 'error');
+                return;
+            }
+            
+            if (amount > state.balance) {
+                showNotification('Insufficient balance', 'error');
+                return;
+            }
+            
+            // Simulate processing
+            setTimeout(() => {
+                // Add to transactions
+                const newTransaction = {
+                    id: Date.now(),
+                    amount: -amount,
+                    description: `Transfer to ${recipient.slice(-4).padStart(8, '*')}`,
+                    icon: 'fas fa-paper-plane',
+                    time: 'Just now',
+                    category: 'transfer',
+                    status: 'completed',
+                    date: new Date()
+                };
+                
+                state.transactions.unshift(newTransaction);
+                state.balance -= amount;
+                
+                // Update UI
+                renderTransactions();
+                updateBalanceVisibility();
+                
+                // Close modal and show success
+                closeModal('transfer-modal');
+                showNotification(`Transfer of ₦${amount.toLocaleString()} successful!`, 'success');
+                
+                // Reset form
+                event.target.reset();
+            }, 1500);
+        }
+        
+        // Notification System
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideInRight 0.3s ease-in reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+        
+        // Service Worker Registration
+        function setupServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            }
+        }
+        
+        // Accessibility Features
+        function setupAccessibility() {
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.classList.add('hidden');
+                    });
+                }
+            });
+            
+            // Add focus styles
+            document.querySelectorAll('button, a, input, [tabindex]').forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.outline = '2px solid var(--primary)';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                el.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+        }
+        
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const sidebar = document.getElementById('sidebar');
+            
+            if (window.innerWidth < 1024) {
+                mobileMenuBtn.style.display = 'block';
+                sidebar.classList.add('hidden');
+            }
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth < 1024) {
+                    mobileMenuBtn.style.display = 'block';
+                } else {
+                    mobileMenuBtn.style.display = 'none';
+                    sidebar.classList.remove('hidden');
+                }
+            });
+        }
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+        
+        // Page Navigation
+        function showDashboard() {
+            document.getElementById('dashboard-content').classList.remove('hidden');
+            document.getElementById('accounts-content').classList.add('hidden');
+            document.getElementById('transactions-content').classList.add('hidden');
+            document.getElementById('page-title').textContent = 'Dashboard';
+            updateActiveNav('dashboard');
+        }
+        
+        function showAccounts() {
+            document.getElementById('dashboard-content').classList.add('hidden');
+            document.getElementById('accounts-content').classList.remove('hidden');
+            document.getElementById('transactions-content').classList.add('hidden');
+            document.getElementById('page-title').textContent = 'Accounts';
+            updateActiveNav('accounts');
+        }
+        
+        function showTransactions() {
+            document.getElementById('dashboard-content').classList.add('hidden');
+            document.getElementById('accounts-content').classList.add('hidden');
+            document.getElementById('transactions-content').classList.remove('hidden');
+            document.getElementById('page-title').textContent = 'Transactions';
+            updateActiveNav('transactions');
+        }
+        
+        function updateActiveNav(current) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.querySelector(`.nav-link[onclick="show${current.charAt(0).toUpperCase() + current.slice(1)}()"]`).classList.add('active');
+        }
+        
+        // Print Functionality
+        function printAccountStatement() {
+            const printContent = document.createElement('div');
+            printContent.className = 'print-content';
+            printContent.innerHTML = `
+                <h1>NexaBank Account Statement</h1>
+                <p>Date: ${new Date().toLocaleDateString()}</p>
+                <p>Account Balance: ₦${state.balance.toLocaleString()}</p>
+                <h2>Recent Transactions</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Description</th>
+                            <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Amount</th>
+                            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${state.transactions.map(t => `
+                            <tr>
+                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">${t.description}</td>
+                                <td style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd; color: ${t.amount > 0 ? 'green' : 'red'}">
+                                    ${t.amount > 0 ? '+' : ''}₦${Math.abs(t.amount).toLocaleString()}
+                                </td>
+                                <td style="padding: 8px; border-bottom: 1px solid #ddd;">${t.date.toLocaleDateString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            document.body.appendChild(printContent);
+            window.print();
+            document.body.removeChild(printContent);
+        }
+        
+        // Initialize animations
+        function initAnimations() {
+            anime({
+                targets: '.card-3d',
+                rotateY: [-5, 5],
+                duration: 3000,
+                direction: 'alternate',
+                easing: 'easeInOutSine',
+                loop: true
+            });
+        }
+    </script>
+</body>
+</html>
